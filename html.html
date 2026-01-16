@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>D&D Рандомайзер</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 24px; }
+    .card { max-width: 520px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 12px; }
+    h1 { margin: 0 0 12px; font-size: 22px; }
+    button { padding: 10px 14px; border: 0; border-radius: 10px; cursor: pointer; font-size: 16px; }
+    .row { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+    .box { flex: 1 1 200px; padding: 12px; border: 1px solid #eee; border-radius: 10px; }
+    .label { font-size: 12px; opacity: 0.7; margin-bottom: 6px; }
+    .value { font-size: 18px; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Рандомайзер персонажа</h1>
+
+    <button id="randomizeBtn" type="button">🎲 Рандомайз</button>
+
+    <div class="row">
+      <div class="box">
+        <div class="label">Раса</div>
+        <div class="value" id="raceValue">—</div>
+      </div>
+
+      <div class="box">
+        <div class="label">Класс</div>
+        <div class="value" id="classValue">—</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const races = [
+      'Гитьянки','Гном','Дварф','Дроу','Полуорк',
+      'Полурослик','Полуэльф','Тифлинг','Человек',
+      'Эльф','Драконорожденный'
+    ];
+
+    const classes = [
+      'Бард','Варвар','Воин','Волшебник','Друид',
+      'Жрец','Колдун','Монах','Паладин','Плут',
+      'Следопыт','Чародей'
+    ];
+
+    const raceEl = document.getElementById('raceValue');
+    const classEl = document.getElementById('classValue');
+    const btn = document.getElementById('randomizeBtn');
+
+    function pickRandom(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function randomize() {
+      raceEl.textContent = pickRandom(races);
+      classEl.textContent = pickRandom(classes);
+    }
+
+    btn.addEventListener('click', randomize);
+    randomize(); // первый запуск
+  });
+</script>
+
+</body>
+</html>
