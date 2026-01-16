@@ -31,6 +31,10 @@
         <div class="label">Класс</div>
         <div class="value" id="classValue">—</div>
       </div>
+      <div class="box">
+        <div class="label">Пол</div>
+        <div class="value" id="sexValue">—</div>
+      </div>
     </div>
   </div>
 
@@ -48,8 +52,11 @@
       'Следопыт','Чародей'
     ];
 
+    const sex = ['Мужской', 'Женский'];
+
     const raceEl = document.getElementById('raceValue');
     const classEl = document.getElementById('classValue');
+    const sexEl = document.getElementById('sexValue');
     const btn = document.getElementById('randomizeBtn');
 
     function pickRandom(arr) {
@@ -59,6 +66,7 @@
     function randomize() {
       raceEl.textContent = pickRandom(races);
       classEl.textContent = pickRandom(classes);
+      sexEl.textContent = pickRandom(sex);
     }
 
     btn.addEventListener('click', randomize);
